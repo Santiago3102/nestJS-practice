@@ -2,19 +2,21 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { CORS } from './constants';
-
+import * as morgan from 'morgan';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const configService = app.get(ConfigService)  
+  app.use(morgan('dev'));
 
-  app.enableCors(CORS)
+  const configService = app.get(ConfigService);
 
-  app.setGlobalPrefix('/api/')
+  app.enableCors(CORS);
 
-  console.log("SERVICE", configService.get('PORT'))
+  app.setGlobalPrefix('/api/');
 
-  await app.listen(3000);
+  await app.listen(configService.get('PORT'));
+
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();
