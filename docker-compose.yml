@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  crud_pg:
+    image: postgres:15.1
+    container_name: crud_pg
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=crud_pg
+      - POSTGRES_USER=user_crud_pg
+      - POSTGRES_PASSWORD=secret1234
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
