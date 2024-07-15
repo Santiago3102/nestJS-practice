@@ -8,7 +8,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { UserDTO, UserUpdateDTO } from '../dto/user.dto';
+import { UserDTO, UserToProjectDTO, UserUpdateDTO } from '../dto/user.dto';
 import { UsersService } from '../services/users.service';
 
 @Controller('users')
@@ -30,6 +30,11 @@ export class UsersController {
     return await this.usersService.findUserById(id);
   }
 
+  @Post('AddToProject')
+  public async addToProject(@Body() body: UserToProjectDTO) {
+    return await this.usersService.relationToProject(body);
+  }
+
   @Put('edit/:id')
   public async updateUser(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -42,4 +47,6 @@ export class UsersController {
   public async deleteUser(@Param('id',new ParseUUIDPipe()) id: string) {
     return await this.usersService.deleteUser(id);
   }
+
+
 }
