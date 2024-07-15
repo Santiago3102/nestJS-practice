@@ -22,11 +22,7 @@ export class AuthController {
       throw new UnauthorizedException('Data not valid');
     }
 
-    
-
     const jwt = await this.authService.generateJWT(userValidate);
-
-    console.log("Pass wweawsd")
 
     return jwt;
   }
