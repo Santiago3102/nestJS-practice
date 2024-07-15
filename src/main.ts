@@ -32,7 +32,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('API')
     .setDescription('CRUD application')
-    .setVersion('1.0')
+    .setVersion('3.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);

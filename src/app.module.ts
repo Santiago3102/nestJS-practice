@@ -1,20 +1,32 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSourceConfig } from './config/data.source';
+import Joi from 'joi';
 import { UsersModule } from './users/users.module';
 import { ProjectsModule } from './projects/projects.module';
 import { AuthModule } from './auth/auth.module';
+import { DatabaseModule } from './database.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
       isGlobal: true,
+      envFilePath: '../.env',
     }),
-    TypeOrmModule.forRoot({ ...DataSourceConfig }),
+    ConfigModule.forRoot({
+      validationSchema: Joi?.object({
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION_TIME: Joi.string().required(),
+        POSTGRES_HOST: Joi?.string().required(),
+        POSTGRES_PORT: Joi?.number().required(),
+        POSTGRES_USER: Joi?.string().required(),
+        POSTGRES_PASSWORD: Joi?.string().required(),
+        POSTGRES_DB: Joi?.string().required(),
+        PORT: Joi?.number(),
+      })
+    }),
     UsersModule,
     ProjectsModule,
+    DatabaseModule,
     AuthModule,
   ],
 })
