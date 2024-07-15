@@ -7,8 +7,8 @@ import {
   IsUUID,
 } from 'class-validator';
 import { ACCESS_LEVEL, ROLES } from 'src/constants/roles';
-import { UsersEntity } from '../entities/users.entity';
 import { ProjectsEntity } from 'src/projects/entities/projects.entity';
+import { UsersEntity } from '../entities/users.entity';
 
 export class UserDTO {
   @IsNotEmpty()

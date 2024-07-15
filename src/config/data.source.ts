@@ -23,4 +23,5 @@ export const DataSourceConfig: DataSourceOptions = {
   namingStrategy: new SnakeNamingStrategy(),
 };
 
+
 export const AppDS = new DataSource(DataSourceConfig);

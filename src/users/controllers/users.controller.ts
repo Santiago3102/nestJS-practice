@@ -30,7 +30,7 @@ export class UsersController {
     return await this.usersService.findUserById(id);
   }
 
-  @Post('AddToProject')
+  @Post('add-to-project')
   public async addToProject(@Body() body: UserToProjectDTO) {
     return await this.usersService.relationToProject(body);
   }
@@ -47,6 +47,4 @@ export class UsersController {
   public async deleteUser(@Param('id',new ParseUUIDPipe()) id: string) {
     return await this.usersService.deleteUser(id);
   }
-
-
 }
