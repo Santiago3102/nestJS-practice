@@ -9,11 +9,11 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { AccessLevel } from 'src/auth/decorators/access-level.decorator';
-import { AdminAccess } from 'src/auth/decorators/admin.decorator';
-import { AccessLevelGuard } from 'src/auth/guards/access-level.guard';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { AccessLevel } from '../../auth/decorators/access-level.decorator';
+import { AdminAccess } from '../../auth/decorators/admin.decorator';
+import { AccessLevelGuard } from '../../auth/guards/access-level.guard';
+import { AuthGuard } from '../../auth/guards/auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
 import { ProjectDTO, ProjectUpdateDTO } from '../dto/projects.dto';
 import { ProjectsService } from '../services/projects.service';
 
@@ -22,12 +22,12 @@ import { ProjectsService } from '../services/projects.service';
 export class ProjectsController {
   constructor(private readonly projectService: ProjectsService) {}
 
-  @AdminAccess()
   @Post('create')
   public async createProject(@Body() body: ProjectDTO) {
     return await this.projectService.createProject(body);
   }
 
+  @AdminAccess()
   @Get('all')
   public async findAllProjects() {
     return await this.projectService.findProjects();

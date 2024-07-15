@@ -6,8 +6,8 @@ import {
   IsString,
   IsUUID,
 } from 'class-validator';
-import { ACCESS_LEVEL, ROLES } from 'src/constants/roles';
-import { ProjectsEntity } from 'src/projects/entities/projects.entity';
+import { ACCESS_LEVEL, ROLES } from '../../constants/roles';
+import { ProjectsEntity } from '../../projects/entities/projects.entity';
 import { UsersEntity } from '../entities/users.entity';
 
 export class UserDTO {

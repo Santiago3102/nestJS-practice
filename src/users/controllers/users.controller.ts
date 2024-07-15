@@ -10,14 +10,14 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { AccessLevel } from 'src/auth/decorators/access-level.decorator';
-import { AdminAccess } from 'src/auth/decorators/admin.decorator';
-import { PublicAccess } from 'src/auth/decorators/public.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
-import { AccessLevelGuard } from 'src/auth/guards/access-level.guard';
-import { AuthGuard } from 'src/auth/guards/auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { ProjectsEntity } from 'src/projects/entities/projects.entity';
+import { AccessLevel } from '../../auth/decorators/access-level.decorator';
+import { AdminAccess } from '../../auth/decorators/admin.decorator';
+import { PublicAccess } from '../../auth/decorators/public.decorator';
+import { Roles } from '../../auth/decorators/roles.decorator';
+import { AccessLevelGuard } from '../../auth/guards/access-level.guard';
+import { AuthGuard } from '../../auth/guards/auth.guard';
+import { RolesGuard } from '../../auth/guards/roles.guard';
+import { ProjectsEntity } from '../../projects/entities/projects.entity';
 import { UserDTO, UserToProjectDTO, UserUpdateDTO } from '../dto/user.dto';
 import { UsersService } from '../services/users.service';
 
